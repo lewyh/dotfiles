@@ -7,7 +7,7 @@ SSID=$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/R
 if [ "$SSID" == "o2 wireless o2" ]||[ "$SSID" == "13HorsaGdns" ]; then
     # Resolve IP addresses upon opening terminal
     SERVERIP=$(arp -a | grep microserver | cut -d "(" -f2 | cut -d ")" -f1)
-    JOGGLERIP=$(arp -a | grep microserver | cut -d "(" -f2 | cut -d ")" -f1)
+    JOGGLERIP=$(arp -a | grep joggler | cut -d "(" -f2 | cut -d ")" -f1)
     alias server='ssh hywel@'${SERVERIP}
     alias joggler='ssh joggler@'${JOGGLERIP}
     # In case anything changes during terminal session
