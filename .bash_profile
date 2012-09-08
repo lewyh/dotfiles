@@ -1,12 +1,17 @@
+# Connection to work
 alias starssh='ssh hfarnhill@star.herts.ac.uk' 
 alias uhppc27='ssh -t -t -L8081:localhost:10000 hfarnhill@star.herts.ac.uk "ssh -L10000:localhost:22 hfarnhill@uhppc27"'
 
-
-alias server='ssh hywel@192.168.1.64'
+# Resolve IP addresses upon opening terminal
+SERVERIP=$(arp -a | grep microserver | cut -d "(" -f2 | cut -d ")" -f1)
+JOGGLERIP=$(arp -a | grep microserver | cut -d "(" -f2 | cut -d ")" -f1)
+alias server='ssh hywel@'${SERVERIP}
+alias joggler='ssh joggler@'${JOGGLERIP}
+# In case anything changes during terminal session
 alias jogglerip='arp -a | grep joggler | cut -d "(" -f2 | cut -d ")" -f1'
 alias serverip='arp -a | grep microserver | cut -d "(" -f2 | cut -d ")" -f1'
 
-
+# Git shorthand
 alias gs='git status '
 alias ga='git add '
 alias gb='git branch '
@@ -15,14 +20,15 @@ alias gd='git diff'
 alias go='git checkout '
 alias gk='gitk --all&'
 alias gx='gitx --all'
-
 alias got='git '
 alias get='git '
 
 alias mvim='~/Software/mvim'
+alias stilts='/Users/Hywel/Desktop/IPHAS/stilts.sh'
+
+# iPlayer stuff
 alias flvstreamer='/Users/Hywel/Downloads/flvstreamer_macosx_unified_binary_latest'
 alias get_iplayer='/Users/Hywel/Downloads/get_iplayer-2.79/get_iplayer'
-alias stilts='/Users/Hywel/Desktop/IPHAS/stilts.sh'
 
 # Setting PATH for Python 2.7
 # The orginal version is saved in .bash_profile.pysave
