@@ -1,6 +1,12 @@
 alias starssh='ssh hfarnhill@star.herts.ac.uk' 
 alias uhppc27='ssh -t -t -L8081:localhost:10000 hfarnhill@star.herts.ac.uk "ssh -L10000:localhost:22 hfarnhill@uhppc27"'
 
+
+alias server='ssh hywel@192.168.1.64'
+alias jogglerip='arp -a | grep joggler | cut -d "(" -f2 | cut -d ")" -f1'
+alias serverip='arp -a | grep microserver | cut -d "(" -f2 | cut -d ")" -f1'
+
+
 alias gs='git status '
 alias ga='git add '
 alias gb='git branch '
