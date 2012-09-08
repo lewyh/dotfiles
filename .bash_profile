@@ -1,15 +1,19 @@
+#!/bin/bash
 # Connection to work
 alias starssh='ssh hfarnhill@star.herts.ac.uk' 
 alias uhppc27='ssh -t -t -L8081:localhost:10000 hfarnhill@star.herts.ac.uk "ssh -L10000:localhost:22 hfarnhill@uhppc27"'
 
-# Resolve IP addresses upon opening terminal
-SERVERIP=$(arp -a | grep microserver | cut -d "(" -f2 | cut -d ")" -f1)
-JOGGLERIP=$(arp -a | grep microserver | cut -d "(" -f2 | cut -d ")" -f1)
-alias server='ssh hywel@'${SERVERIP}
-alias joggler='ssh joggler@'${JOGGLERIP}
-# In case anything changes during terminal session
-alias jogglerip='arp -a | grep joggler | cut -d "(" -f2 | cut -d ")" -f1'
-alias serverip='arp -a | grep microserver | cut -d "(" -f2 | cut -d ")" -f1'
+SSID=$(/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -I | awk -F': ' '/ SSID/ {print $2}')
+if [ "$SSID" == "o2 wireless o2" ]||[ "$SSID" == "13HorsaGdns" ]; then
+    # Resolve IP addresses upon opening terminal
+    SERVERIP=$(arp -a | grep microserver | cut -d "(" -f2 | cut -d ")" -f1)
+    JOGGLERIP=$(arp -a | grep microserver | cut -d "(" -f2 | cut -d ")" -f1)
+    alias server='ssh hywel@'${SERVERIP}
+    alias joggler='ssh joggler@'${JOGGLERIP}
+    # In case anything changes during terminal session
+    alias jogglerip='arp -a | grep joggler | cut -d "(" -f2 | cut -d ")" -f1'
+    alias serverip='arp -a | grep microserver | cut -d "(" -f2 | cut -d ")" -f1'
+fi
 
 # Git shorthand
 alias gs='git status '
